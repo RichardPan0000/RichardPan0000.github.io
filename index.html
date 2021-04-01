@@ -93,7 +93,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="java中一个类成为另一个类的属性的引用手段以及涉及内存"><a href="#java中一个类成为另一个类的属性的引用手段以及涉及内存" class="headerlink" title="java中一个类成为另一个类的属性的引用手段以及涉及内存"></a><strong>java中一个类成为另一个类的属性的引用手段以及涉及内存</strong></h1><h2 id="一个类成为另一个类的属性，并且如果调用？"><a href="#一个类成为另一个类的属性，并且如果调用？" class="headerlink" title="一个类成为另一个类的属性，并且如果调用？"></a>一个类成为另一个类的属性，并且如果调用？</h2><p>​    java语言中，在我们定义类中的属性的时候，当某个属性过于复杂，但是它又是代表了这个类中的属性，而该属性又可以根据某些特质分为另一个类，免不了要定义另一个类来作为该属性。</p>
+        <h2 id="一个类成为另一个类的属性，并且如果调用？"><a href="#一个类成为另一个类的属性，并且如果调用？" class="headerlink" title="一个类成为另一个类的属性，并且如果调用？"></a>一个类成为另一个类的属性，并且如果调用？</h2><p>​    java语言中，在我们定义类中的属性的时候，当某个属性过于复杂，但是它又是代表了这个类中的属性，而该属性又可以根据某些特质分为另一个类，免不了要定义另一个类来作为该属性。</p>
 <p>例如以下代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	String name;</span><br><span class="line">	<span class="keyword">int</span> no;</span><br><span class="line">	Address addr; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -112,12 +112,12 @@
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Address user.addr=new Address();   //这种方式会出现编译错误，也就是这种写法是错的。</span></span><br><span class="line">		Address ad=<span class="keyword">new</span> Address();</span><br><span class="line">		user.addr=ad;                        <span class="comment">//这种方法表明，两个都是指向同一块地址空间，一个改动，											另一个随之也发生改动</span></span><br></pre></td></tr></table></figure>
 <p>其中当ad 赋值给user.addr 属性的时候，两个其实都是指向同一块地址，所以更改它们中一个，另一个也随之更改。下面是编译运行结果。</p>
-<p><img src="C:\Users\RichardPan0000\Desktop\捕获.JPG" alt="运行结果" title="类引用"></p>
+<p><img src="C:\Users\RichardPan0000\Desktop\捕获.JPG" title="类引用"></p>
 <h2 id="类定义引用内存空间变化"><a href="#类定义引用内存空间变化" class="headerlink" title="类定义引用内存空间变化"></a>类定义引用内存空间变化</h2><p>​    我们知道一个java字节码文件编译之后，会产生.class文件，然后在运行的时候，类加载器就会将其加载到JVM虚拟机当中，然后就会产生内存，其中那些代码片段就主要存在方法区内存当中。又因为main方法是程序的入口，所以随着代码子自上而下运行，也就是调用到哪个类的时候，就会在加载哪个类到虚拟机中，就会占用方法区内存。</p>
 <p>​    而我们栈内存则是，调用一个方法就就行入栈操作，例如下图中，方法区内存中执行到main方法，对应就在入栈一个main方法的内存空间，这块空间用来存main方法中的局部变量，然后main方法执行的时候，调用了m方法，所以就入栈一个m方法的内存空间，同样m方法中空间也是存它自己的局部变量的。当嵌套调用的时候跟上述过程一样。然后当m方法结束的时候，出栈，m方法内存空间释放，随之执行完main方法，出栈，释放main方法的内存空间。</p>
-<p><img src="C:\Users\RichardPan0000\Desktop\栈.JPG" alt="栈内存" title="栈内存"></p>
+<p><img src="C:\Users\RichardPan0000\Desktop\栈.JPG" title="栈内存"></p>
 <p>而堆空间则是用来存放成员变量的，也就是类体内直接定义的类变量，而这块内存在定义的时候并没有用，只有在代码中有new指令(上文有new 指令的用法)，并且在虚拟机执行到这一步的时候，堆内存中才开辟一块空间来存放某个类实例化之后的实例对象。而在程序中对某个实例的属性进行引用操作才能修改其值，否则都是，应当注意的，String 其实也是一种引用数据类型（不是四种基本数据类型，这个概念可以网上查到）。</p>
-<p><img src="C:\Users\RichardPan0000\Desktop\内存.JPG" alt="内存变化" title="内存变化"></p>
+<p><img src="C:\Users\RichardPan0000\Desktop\内存.JPG" title="内存变化"></p>
 
       
     </div>
