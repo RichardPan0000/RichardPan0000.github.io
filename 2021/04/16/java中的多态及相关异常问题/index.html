@@ -4,15 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>java中的多态及相关异常问题 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="java中的多态1、类型转换​      “多态”意思是多种形态（或者说状态），今天我们要讲的是java编译和运行会产生不同状态，或者说是设计时和运行时所产生的不同状态。在此之前我们先讲一个概念，数据转型，假如你学过其它变成语言，你就知道有时候我们需要将某种数据类型的数据转换成我们所需要的数据类型，例如八种基本数据类型byte、short、int、long、float、double、char、bo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java中的多态及相关异常问题">
+<meta property="og:url" content="http://example.com/2021/04/16/java%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="java中的多态1、类型转换​      “多态”意思是多种形态（或者说状态），今天我们要讲的是java编译和运行会产生不同状态，或者说是设计时和运行时所产生的不同状态。在此之前我们先讲一个概念，数据转型，假如你学过其它变成语言，你就知道有时候我们需要将某种数据类型的数据转换成我们所需要的数据类型，例如八种基本数据类型byte、short、int、long、float、double、char、bo">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/RichardPan0000/Desktop/1.PNG">
+<meta property="og:image" content="c:/Users/RichardPan0000/Desktop/2.PNG">
+<meta property="og:image" content="c:/Users/RichardPan0000/Desktop/3.PNG">
+<meta property="og:image" content="c:/Users/RichardPan0000/Desktop/4.PNG">
+<meta property="og:image" content="c:/Users/RichardPan0000/Desktop/5.PNG">
+<meta property="article:published_time" content="2021-04-16T02:08:50.886Z">
+<meta property="article:modified_time" content="2021-04-16T02:09:58.923Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/RichardPan0000/Desktop/1.PNG">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -69,9 +79,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-java中的多态及相关异常问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-java中的多态及相关异常问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/16/java%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/" class="article-date">
   <time class="dt-published" datetime="2021-04-16T02:08:50.886Z" itemprop="datePublished">2021-04-16</time>
@@ -84,8 +92,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/16/java%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/">java中的多态及相关异常问题</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      java中的多态及相关异常问题
     </h1>
   
 
@@ -144,128 +152,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-java中一个类成为另一个类的属性的引用手段" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/01/java%E4%B8%AD%E4%B8%80%E4%B8%AA%E7%B1%BB%E6%88%90%E4%B8%BA%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7%E7%9A%84%E5%BC%95%E7%94%A8%E6%89%8B%E6%AE%B5/" class="article-date">
-  <time class="dt-published" datetime="2021-04-01T08:27:00.894Z" itemprop="datePublished">2021-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/01/java%E4%B8%AD%E4%B8%80%E4%B8%AA%E7%B1%BB%E6%88%90%E4%B8%BA%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7%E7%9A%84%E5%BC%95%E7%94%A8%E6%89%8B%E6%AE%B5/">java中一个类成为另一个类的属性的引用手段以及涉及内存</a>
-    </h1>
+    <a href="/2021/04/01/java%E4%B8%AD%E4%B8%80%E4%B8%AA%E7%B1%BB%E6%88%90%E4%B8%BA%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7%E7%9A%84%E5%BC%95%E7%94%A8%E6%89%8B%E6%AE%B5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">java中一个类成为另一个类的属性的引用手段以及涉及内存</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="一个类成为另一个类的属性，并且如果调用？"><a href="#一个类成为另一个类的属性，并且如果调用？" class="headerlink" title="一个类成为另一个类的属性，并且如果调用？"></a>一个类成为另一个类的属性，并且如果调用？</h2><p>​    java语言中，在我们定义类中的属性的时候，当某个属性过于复杂，但是它又是代表了这个类中的属性，而该属性又可以根据某些特质分为另一个类，免不了要定义另一个类来作为该属性。</p>
-<p>例如以下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	String name;</span><br><span class="line">	<span class="keyword">int</span> no;</span><br><span class="line">	Address addr; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​    假如我们定义了一个User类，而我们我们Address 属性本身也是可以作为一个类来重新定义，这样意味着我们需要编写另一个java字节码文件，并且定义Address 类。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	String city;</span><br><span class="line">	String street;</span><br><span class="line">	<span class="keyword">int</span> homeNo; <span class="comment">//门牌号</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>​     随之我们引出另一个问题，也就是怎么引用的问题，我们编写一个java文件来调用这些类。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			User user=<span class="keyword">new</span> User(); <span class="comment">//开辟一块内存空间，成为实例对象，然后在赋给user</span></span><br><span class="line">			System.out.println(<span class="string">&quot;user.no&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.no);	</span><br><span class="line">			System.out.println(<span class="string">&quot;user.name&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.name);</span><br><span class="line">			System.out.println(<span class="string">&quot;user.addr&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.addr);</span><br><span class="line">			<span class="comment">//Address user.addr=new Address();   //这种方式会出现编译错误，也就是这种写法是错的。</span></span><br><span class="line">			Address ad=<span class="keyword">new</span> Address();</span><br><span class="line">			user.addr=ad;                        <span class="comment">//这种方法表明，两个都是指向同一块地址空间，一个改动，											另一个随之也发生改动</span></span><br><span class="line">			System.out.println(<span class="string">&quot;先用ad开辟一块空间，之后再用user.addr=ad来赋值&quot;</span>);</span><br><span class="line">			System.out.println(<span class="string">&quot;addr.city&quot;</span>+<span class="string">&quot;\t&quot;</span>+ad.city);</span><br><span class="line">			System.out.println(<span class="string">&quot;addr.street&quot;</span>+<span class="string">&quot;\t&quot;</span>+ad.street);</span><br><span class="line">			System.out.println(<span class="string">&quot;user.addr.city&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.addr.city);</span><br><span class="line">			System.out.println(<span class="string">&quot;user.addr.street&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.addr.street);</span><br><span class="line"></span><br><span class="line">			System.out.println(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">			System.out.println(<span class="string">&quot;引用ad.来赋值&quot;</span>);</span><br><span class="line">			ad.city=<span class="string">&quot;Beijing&quot;</span>;</span><br><span class="line">			ad.street=<span class="string">&quot;Zhongguancun&quot;</span>;</span><br><span class="line">			System.out.println(<span class="string">&quot;addr.city&quot;</span>+<span class="string">&quot;\t&quot;</span>+ad.city);</span><br><span class="line">			System.out.println(<span class="string">&quot;addr.street&quot;</span>+<span class="string">&quot;\t&quot;</span>+ad.street);</span><br><span class="line">			System.out.println(<span class="string">&quot;user.addr.city&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.addr.city);</span><br><span class="line">			System.out.println(<span class="string">&quot;user.addr.street&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.addr.street);</span><br><span class="line">			System.out.println(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">			System.out.println(<span class="string">&quot;只改动user.addr.street&quot;</span>);</span><br><span class="line">			user.addr.street=<span class="string">&quot;Weigongcun&quot;</span>;</span><br><span class="line">			System.out.println(<span class="string">&quot;user.addr.street&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.addr.street);</span><br><span class="line">			System.out.println(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">			System.out.println(<span class="string">&quot;直接给user.addr开辟一块空间&quot;</span>);</span><br><span class="line">			<span class="comment">//Address user.addr=new Address();   // 此为错误方式</span></span><br><span class="line">			System.out.println(<span class="string">&quot;user.addr.city&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.addr.city);</span><br><span class="line">			System.out.println(<span class="string">&quot;user.addr.street&quot;</span>+<span class="string">&quot;\t&quot;</span>+user.addr.street);</span><br><span class="line">			System.out.println(<span class="string">&quot;user.ad.street&quot;</span>+<span class="string">&quot;\t&quot;</span>+ad.street);   <span class="comment">//</span></span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​    其中我们需要注意的是，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User user=<span class="keyword">new</span> User(); <span class="comment">//开辟一块内存空间，成为实例对象，然后在赋给user。同样这个在引用Address 的时候也需要同样的方法。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Address user.addr=new Address();   //这种方式会出现编译错误，也就是这种写法是错的。</span></span><br><span class="line">		Address ad=<span class="keyword">new</span> Address();</span><br><span class="line">		user.addr=ad;                        <span class="comment">//这种方法表明，两个都是指向同一块地址空间，一个改动，											另一个随之也发生改动</span></span><br></pre></td></tr></table></figure>
-<p>其中当ad 赋值给user.addr 属性的时候，两个其实都是指向同一块地址，所以更改它们中一个，另一个也随之更改。下面是编译运行结果。</p>
-<img src="C:\Users\RichardPan0000\Desktop\buhuo.JPG" title="类引用" style="zoom:80%;" />
-
-
-
-<h2 id="类定义引用内存空间变化"><a href="#类定义引用内存空间变化" class="headerlink" title="类定义引用内存空间变化"></a>类定义引用内存空间变化</h2><p>​    我们知道一个java字节码文件编译之后，会产生.class文件，然后在运行的时候，类加载器就会将其加载到JVM虚拟机当中，然后就会产生内存，其中那些代码片段就主要存在方法区内存当中。又因为main方法是程序的入口，所以随着代码子自上而下运行，也就是调用到哪个类的时候，就会在加载哪个类到虚拟机中，就会占用方法区内存。</p>
-<p>​    而我们栈内存则是，调用一个方法就就行入栈操作，例如下图中，方法区内存中执行到main方法，对应就在入栈一个main方法的内存空间，这块空间用来存main方法中的局部变量，然后main方法执行的时候，调用了m方法，所以就入栈一个m方法的内存空间，同样m方法中空间也是存它自己的局部变量的。当嵌套调用的时候跟上述过程一样。然后当m方法结束的时候，出栈，m方法内存空间释放，随之执行完main方法，出栈，释放main方法的内存空间。</p>
-<p><img src="C:\Users\RichardPan0000\Desktop\zhan.JPG" style="zoom:80%;" /><img src="C:\Users\RichardPan0000\Desktop\neicun.JPG"></p>
-<p>而堆空间则是用来存放成员变量的，也就是类体内直接定义的类变量，而这块内存在定义的时候并没有用，只有在代码中有new指令(上文有new 指令的用法)，并且在虚拟机执行到这一步的时候，堆内存中才开辟一块空间来存放某个类实例化之后的实例对象。而在程序中对某个实例的属性进行引用操作才能修改其值，否则都是，应当注意的，String 其实也是一种引用数据类型（不是四种基本数据类型，这个概念可以网上查到）。</p>
-<p><img src="C:\Users\RichardPan0000\Desktop\zhan.JPG" style="zoom:80%;" /><img src="C:\Users\RichardPan0000\Desktop\neicun.JPG"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/01/java%E4%B8%AD%E4%B8%80%E4%B8%AA%E7%B1%BB%E6%88%90%E4%B8%BA%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7%E7%9A%84%E5%BC%95%E7%94%A8%E6%89%8B%E6%AE%B5/" data-id="ckmyokc8e0000ycwih1dbccuh" data-title="java中一个类成为另一个类的属性的引用手段以及涉及内存" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/31/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-03-31T09:30:01.087Z" itemprop="datePublished">2021-03-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/31/hello-world/" data-id="ckmyokcis0001ycwi5obwfy4a" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
