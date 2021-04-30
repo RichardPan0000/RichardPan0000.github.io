@@ -71,6 +71,84 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-wenzhang" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/30/wenzhang/" class="article-date">
+  <time class="dt-published" datetime="2021-04-30T07:20:09.000Z" itemprop="datePublished">2021-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/30/wenzhang/">wenzhang</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="java中的多态"><a href="#java中的多态" class="headerlink" title="java中的多态"></a><strong>java中的多态</strong></h1><h2 id="1、类型转换"><a href="#1、类型转换" class="headerlink" title="1、类型转换"></a>1、类型转换</h2><p>​      “多态”意思是多种形态（或者说状态），今天我们要讲的是java编译和运行会产生不同状态，或者说是设计时和运行时所产生的不同状态。在此之前我们先讲一个概念，数据转型，假如你学过其它变成语言，你就知道有时候我们需要将某种数据类型的数据转换成我们所需要的数据类型，例如八种基本数据类型byte、short、int、long、float、double、char、boolean，是可以转换的。（这里不详细展开）</p>
+<p>​       一般而言，小数据类型转换为大数据类型我们称为自动转换类型（如byte转int，int转long等），而大数据类型转小数据类型我们称强制类型转换（如int转byte，long转int等），其中强制类型转换需要加强制类型转换符，否则编译报错，而自动类型转换则不需要。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*小数据类型转换为大数据类型（自动类型转换），没有问题</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">long</span> j;</span><br><span class="line">j=i;  <span class="comment">//编译没问题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment">*大数据类型转换为小数据类型（自动类型转换），没有问题</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">long</span> b=<span class="number">10L</span>;</span><br><span class="line">a=b;  <span class="comment">//编译出错，需要加强制类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment">*大数据类型转换为小数据类型（自动类型转换），没有问题</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">long</span> b=<span class="number">10L</span>;</span><br><span class="line">a=(<span class="keyword">int</span>)b;  <span class="comment">//编译通过</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>大类型转换为小类型的话，不加强制类型转换符会在编译阶段报错。    </p>
+<p><img src="/.com//1.png" alt="1"></p>
+<h2 id="2、多态及类型转换异常"><a href="#2、多态及类型转换异常" class="headerlink" title="2、多态及类型转换异常"></a>2、多态及类型转换异常</h2><p>​       讲完数据类型转换，我们讲一下继承当中的子类和父类，其实类也算是一种引用数据类型，所以它们也存在着转型的关系，而子类转父类我们称为向上转型，是自动转换类型（类似于上面所讲的小数据类型转大数据类型），而父类转子类我们称为向下转型，是强制转换类型（类似于上面所讲的大数据类型转小数据类型），其中的向上向下意思是一般父类在上，子类在下这种关系而已。</p>
+<p><img src="/.com//2.PNG"></p>
+<p>​        这里我们先贴两段代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   *因为java多态的实现需要满足三个条件：继承、向上转型、方法重写。</span></span><br><span class="line"><span class="comment">   *所以我们下面定义了Animal类，Cat类，Bird类，其中后两个类都是继承Animal类的。</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;动物在移动！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;猫在走猫步！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">catchMouse</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;猫抓老鼠！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bird</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;鸟在飞翔！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Animal a1= <span class="keyword">new</span> Cat();   <span class="comment">//我们定义一个Animal类型的a1，但是创建的是一个Cat()类型，这样是允许的向上								//转型</span></span><br><span class="line">		Cat c1=<span class="keyword">new</span> Cat();</span><br><span class="line">		a1.move();</span><br><span class="line">		<span class="comment">//a1.catchMouse();  //直接编译不通过</span></span><br><span class="line">		c1.move();</span><br><span class="line">		c1.catchMouse();  <span class="comment">//编译通过</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/.com//3.PNG"></p>
+<p>​        运行之后发现，a1.move()其实运行的是Cat类中的move方法，而a1.catMouse()直接编译不通过，这是怎么回事呢？这是因为。</p>
+<ol>
+<li><p>java程序永远分为编译阶段和运行阶段。程序都是先经过编译通过之后才能进行运行。</p>
+</li>
+<li><p>编译阶段编译器检查a1这个引用数据类型为Animal，由于Animal.class字节码中只有move方法，所以编译通过a1.move()，但是并没有catchMose方法，所以这一行引用（a1.catchMouse）是不会编译通过的。编译阶段我们称为静态绑定、编译阶段绑定，只有静态绑定成功才有后续运行。</p>
+</li>
+<li><p>在程序运行截断能，JVM堆内存当中真实创建的对象是Cat对象，那么程序在运行阶段一定会调用Cat对象的move（）方法，此时发生了程序的动态绑定，运行阶段绑定。</p>
+</li>
+<li><p>其实即使Cat类中没有重写move方法，按照继承Animal类，它其实是也有move方法的。</p>
+</li>
+<li><p>父类引用指向子类型对象的这种机制导致程序存在编译阶段绑定和运行阶段绑定两种不同的形态，这种机制我们就成为多态语法机制。</p>
+<p>下面我们来看看一张图就理解了。</p>
+<p><img src="/.com//4.PNG"></p>
+</li>
+</ol>
+<p>​       也就是说Animal a1= new Cat();表示在栈内存中创建了一个Animal数据类型的变量a1，但是a1指向的对象是在堆内存中创建的Cat对象，这个对象的本质还是Cat类型，所以就能够解释为什么运行阶段是Cat中的move方法。而a1.catchMouse只是在编译阶段检查语法的时候编译器检查出它是Animal类型而已，但实际上它的本质是Cat类型，其实还是有catchMouse方法的。如果想java程序与内存的关系可以看我另一篇文。</p>
+<p>​        但实际上你真的需要使用catchMouse方法的时候，只需要向下转型（强制类型转换即可），并且因为它本身对象是在堆内存中是Cat类型的，所以在转型之后就可以使用catchMouse方法。（但是向下转型也是必须有继承关系才行的）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cat c2=(Cat) a1;</span><br><span class="line">c2.catchMouse();<span class="comment">//这样就能够访问正常。</span></span><br></pre></td></tr></table></figure>
+
+<p>​        拥有同一个父类，使用强制类型转换的话，在语法上编译通过，但是在运行的时候会报错。我在上面定义的Cat类型、Bird类型都是继承Animal类，但是两个类本身不是继承关系。但是不能够在定义一个Animal的b</p>
+<p>1（实际是Bird类型），然后强制类型转换（向下转换）为Cat类型，因为它在堆内存中实际存的是Bird类型，运行阶段都是按其在堆内存中的对象本质来运行的。这种方式会出现异常，称为“类型转换异常”。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Animal b1= <span class="keyword">new</span> Bird();</span><br><span class="line">		 Cat c3=(Cat) b1;<span class="comment">//这种情况下，其实可以编译通过，因为b1在编译器那里检测是Animal类型，但是在运行的时                            //候回出现异常</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/.com//5.PNG" alt="5"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/30/wenzhang/" data-id="cko3zmf970000dowie1vr8hwe" data-title="wenzhang" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-java中的多态及相关异常问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/16/java%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/" class="article-date">
@@ -98,15 +176,15 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*小数据类型转换为大数据类型（自动类型转换），没有问题</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">long</span> j;</span><br><span class="line">j=i;  <span class="comment">//编译没问题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment">*大数据类型转换为小数据类型（自动类型转换），没有问题</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">long</span> b=<span class="number">10L</span>;</span><br><span class="line">a=b;  <span class="comment">//编译出错，需要加强制类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment">*大数据类型转换为小数据类型（自动类型转换），没有问题</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">long</span> b=<span class="number">10L</span>;</span><br><span class="line">a=(<span class="keyword">int</span>)b;  <span class="comment">//编译通过</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>大类型转换为小类型的话，不加强制类型转换符会在编译阶段报错。    </p>
-<p><img src="D:\soft_ware\hexo_install\HEXO\blog\source_posts\1.PNG"></p>
+<p><img src="/2021/04/16/java%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/1.PNG"></p>
 <h2 id="2、多态及类型转换异常"><a href="#2、多态及类型转换异常" class="headerlink" title="2、多态及类型转换异常"></a>2、多态及类型转换异常</h2><p>​       讲完数据类型转换，我们讲一下继承当中的子类和父类，其实类也算是一种引用数据类型，所以它们也存在着转型的关系，而子类转父类我们称为向上转型，是自动转换类型（类似于上面所讲的小数据类型转大数据类型），而父类转子类我们称为向下转型，是强制转换类型（类似于上面所讲的大数据类型转小数据类型），其中的向上向下意思是一般父类在上，子类在下这种关系而已。</p>
-<p><img src="D:\soft_ware\hexo_install\HEXO\blog\source_posts\2.PNG"></p>
+<p><img src="/2.PNG"></p>
 <p>​        这里我们先贴两段代码。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   *因为java多态的实现需要满足三个条件：继承、向上转型、方法重写。</span></span><br><span class="line"><span class="comment">   *所以我们下面定义了Animal类，Cat类，Bird类，其中后两个类都是继承Animal类的。</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;动物在移动！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;猫在走猫步！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">catchMouse</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;猫抓老鼠！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bird</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;鸟在飞翔！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Animal a1= <span class="keyword">new</span> Cat();   <span class="comment">//我们定义一个Animal类型的a1，但是创建的是一个Cat()类型，这样是允许的向上								//转型</span></span><br><span class="line">		Cat c1=<span class="keyword">new</span> Cat();</span><br><span class="line">		a1.move();</span><br><span class="line">		<span class="comment">//a1.catchMouse();  //直接编译不通过</span></span><br><span class="line">		c1.move();</span><br><span class="line">		c1.catchMouse();  <span class="comment">//编译通过</span></span><br></pre></td></tr></table></figure>
 
 
 
-<p><img src="D:\soft_ware\hexo_install\HEXO\blog\source_posts\3.PNG"></p>
+<p><img src="/2021/04/16/java%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/soft_ware\hexo_install\HEXO\blog\source_posts\3.PNG"></p>
 <p>​        运行之后发现，a1.move()其实运行的是Cat类中的move方法，而a1.catMouse()直接编译不通过，这是怎么回事呢？这是因为。</p>
 <ol>
 <li><p>java程序永远分为编译阶段和运行阶段。程序都是先经过编译通过之后才能进行运行。</p>
@@ -119,7 +197,7 @@
 </li>
 <li><p>父类引用指向子类型对象的这种机制导致程序存在编译阶段绑定和运行阶段绑定两种不同的形态，这种机制我们就成为多态语法机制。</p>
 <p>下面我们来看看一张图就理解了。</p>
-<p><img src="D:\soft_ware\hexo_install\HEXO\blog\source_posts\4.PNG"></p>
+<p><img src="/2021/04/16/java%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/4.PNG"></p>
 </li>
 </ol>
 <p>​       也就是说Animal a1= new Cat();表示在栈内存中创建了一个Animal数据类型的变量a1，但是a1指向的对象是在堆内存中创建的Cat对象，这个对象的本质还是Cat类型，所以就能够解释为什么运行阶段是Cat中的move方法。而a1.catchMouse只是在编译阶段检查语法的时候编译器检查出它是Animal类型而已，但实际上它的本质是Cat类型，其实还是有catchMouse方法的。如果想java程序与内存的关系可以看我另一篇文。</p>
@@ -132,7 +210,7 @@
 
 
 
-<p><img src="D:\soft_ware\hexo_install\HEXO\blog\source_posts\5.PNG"></p>
+<p><img src="/2021/04/16/java%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/%5C5.PNG"></p>
 
       
     </div>
@@ -190,10 +268,10 @@
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Address user.addr=new Address();   //这种方式会出现编译错误，也就是这种写法是错的。</span></span><br><span class="line">		Address ad=<span class="keyword">new</span> Address();</span><br><span class="line">		user.addr=ad;                        <span class="comment">//这种方法表明，两个都是指向同一块地址空间，一个改动，											另一个随之也发生改动</span></span><br></pre></td></tr></table></figure>
 <p>其中当ad 赋值给user.addr 属性的时候，两个其实都是指向同一块地址，所以更改它们中一个，另一个也随之更改。下面是编译运行结果。</p>
-<p><img src="D:\soft_ware\hexo_install\HEXO\blog\source_posts\11.JPG"></p>
+<p><img src="/.com//.%5C11.JPG"></p>
 <h2 id="类定义引用内存空间变化"><a href="#类定义引用内存空间变化" class="headerlink" title="类定义引用内存空间变化"></a>类定义引用内存空间变化</h2><p>​    我们知道一个java字节码文件编译之后，会产生.class文件，然后在运行的时候，类加载器就会将其加载到JVM虚拟机当中，然后就会产生内存，其中那些代码片段就主要存在方法区内存当中。又因为main方法是程序的入口，所以随着代码子自上而下运行，也就是调用到哪个类的时候，就会在加载哪个类到虚拟机中，就会占用方法区内存。</p>
 <p>​    而我们栈内存则是，调用一个方法就就行入栈操作，例如下图中，方法区内存中执行到main方法，对应就在入栈一个main方法的内存空间，这块空间用来存main方法中的局部变量，然后main方法执行的时候，调用了m方法，所以就入栈一个m方法的内存空间，同样m方法中空间也是存它自己的局部变量的。当嵌套调用的时候跟上述过程一样。然后当m方法结束的时候，出栈，m方法内存空间释放，随之执行完main方法，出栈，释放main方法的内存空间。</p>
-<p><img src="D:\soft_ware\hexo_install\HEXO\blog\source_posts\12.JPG"></p>
+<p><img src="/.com//.%5C12.JPG"></p>
 <p>而堆空间则是用来存放成员变量的，也就是类体内直接定义的类变量，而这块内存在定义的时候并没有用，只有在代码中有new指令(上文有new 指令的用法)，并且在虚拟机执行到这一步的时候，堆内存中才开辟一块空间来存放某个类实例化之后的实例对象。而在程序中对某个实例的属性进行引用操作才能修改其值，否则都是，应当注意的，String 其实也是一种引用数据类型（不是四种基本数据类型，这个概念可以网上查到）。</p>
 
       
@@ -291,6 +369,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/04/30/wenzhang/">wenzhang</a>
+          </li>
         
           <li>
             <a href="/2021/04/16/java%E4%B8%AD%E7%9A%84%E5%A4%9A%E6%80%81%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/">java中的多态及相关异常问题</a>
